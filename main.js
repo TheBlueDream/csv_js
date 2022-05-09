@@ -14,7 +14,7 @@ fs.writeFileSync('./data/data.json', string_json);
 // 객체 키값 업종 종류, 음식점, 이미용, 숙박업, 세탁업
 const jsonobj = JSON.parse(string_json);
 
-
+//csv 스트링 불러와서 json 어레이 형식으로 변경
 function csvToJSON(csv_string){  
     const rows = csv_string.split("\r\n"); 
     const jsonArray = [];
@@ -28,12 +28,11 @@ function csvToJSON(csv_string){
         jsonArray.push(obj); 
     } 
     return jsonArray; 
-    // 문자열 형태의 JSON으로 반환할 경우, 아래 코드 사용 
-    // return JSON.stringify(jsonArray); 
 }
 
 // json 객체 검색 함수
 // 객체, 필드명, 검색값 으로 객체리스트속 키값에 검색어가 포함되있으면 객체 배열로 리턴
+// console.log(getObjectsSearch(jsonobj, '지역', '서귀'));
 function getObjectsSearch(obj, key, val) {
     var objects = [];
     for (var i in obj) {
@@ -48,13 +47,14 @@ function getObjectsSearch(obj, key, val) {
     return objects;
 }
 
-console.log(getObjectsSearch(jsonobj, '지역', '서'));
+
 
 
 // 필드명, 키값 으로 json 리스트 출력
 // return an array of objects according to key, value, or key and value matching
 // console.log(getObjects(jsonobj,'업종','음식점'));
 // 소스코드 참고 : http://techslides.com/how-to-parse-and-search-json-in-javascript
+//console.log(getObjects(jsonobj,'업종','음식점'));
 function getObjects(obj, key, val) {
     var objects = [];
     for (var i in obj) {
@@ -74,7 +74,5 @@ function getObjects(obj, key, val) {
     }
     return objects;
 }
-
-//console.log(getObjects(jsonobj,'업종','음식점'));
 
 
